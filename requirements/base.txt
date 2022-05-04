@@ -1,0 +1,9 @@
+Django
+psycopg2-binary
+django-rest-framework
+django-versatileimagefield
+django-ckeditor
+django-cors-headers
+django-storages
+django-cacheops
+django-admin-sortable2
