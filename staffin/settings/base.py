@@ -17,8 +17,10 @@ INSTALLED_APPS = [
 
     'corsheaders',
     'rest_framework',
+    'rest_framework.authtoken',
     'ckeditor',
     'versatileimagefield',
+    'djoser',
 
     'apps.user',
 
@@ -97,6 +99,11 @@ STATIC_URL = 'static/'
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+# _J2aF@SV
+
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 REST_FRAMEWORK = {
@@ -104,14 +111,14 @@ REST_FRAMEWORK = {
     # 'SEARCH_PARAM': 'q',
     # 'DEFAULT_PAGINATION_CLASS': 'nca.libs.drf.pagination.PageNumberPagination',
     # 'PAGE_SIZE': 20,
-    # 'DEFAULT_PERMISSION_CLASSES': (
-    #     'rest_framework.permissions.AllowAny',
-    # ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
     # 'EXCEPTION_HANDLER': 'nca.libs.drf.exceptions.exception_handler',
-    # 'DEFAULT_AUTHENTICATION_CLASSES': [
-        # 'apps.users.authentication.TokenAuthentication'
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication'
         # 'apps.users.authentication.AccessKeyAuthentication'
-    # ],
+    ],
     # 'DEFAULT_THROTTLE_RATES': {
     #     'loginAttempts': '12/min',
     #     'user': '100/min',
@@ -120,4 +127,14 @@ REST_FRAMEWORK = {
     # }
 }
 
-AUTH_USER = 'apps.user.User'
+AUTH_USER_MODEL = 'user.User'
+
+
+DJOSER = {
+    'USER_ID_FIELD' : 'id', 
+    'USER_CREATE_PASSWORD_RETYPE' : True,  
+    # 'PASSWORD_RESET_CONFIRM_URL' : 'password-reset/confirm/{uid}/{token}',
+    # 'ACTIVATION_URL': '',
+    # 'USER_CREATE_USERNAME_RETYPE' : True,  
+
+}

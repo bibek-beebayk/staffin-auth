@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+# from djoser.views import UserViewSet
 
 # Create your models here.
 
@@ -9,4 +10,6 @@ class User(AbstractUser):
     password = models.CharField(max_length=256)
 
     USERNAME_FIELD = 'email'
-    REQUIRED = []
+    REQUIRED_FIELDS = ['username']
+
+

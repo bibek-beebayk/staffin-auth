@@ -7,3 +7,4 @@ django-cors-headers
 django-storages
 django-cacheops
 django-admin-sortable2
+djoser
