@@ -101,8 +101,15 @@ STATIC_URL = 'static/'
 
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'beebayk63478@gmail.com'
+EMAIL_HOST_PASSWORD = 'ushivokopscgiscd'
+EMAIL_USE_TLS = True
 
-# _J2aF@SV
+# ushivokopscgiscd
+# beebayk63478@gmail.com
+
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
@@ -117,7 +124,6 @@ REST_FRAMEWORK = {
     # 'EXCEPTION_HANDLER': 'nca.libs.drf.exceptions.exception_handler',
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.TokenAuthentication'
-        # 'apps.users.authentication.AccessKeyAuthentication'
     ],
     # 'DEFAULT_THROTTLE_RATES': {
     #     'loginAttempts': '12/min',
@@ -132,9 +138,16 @@ AUTH_USER_MODEL = 'user.User'
 
 DJOSER = {
     'USER_ID_FIELD' : 'id', 
-    'USER_CREATE_PASSWORD_RETYPE' : True,  
+    'USER_CREATE_PASSWORD_RETYPE' : True,
+    'SEND_CONFIRMATION_EMAIL':  True,
+    'SEND_ACTIVATION_EMAIL': True,
+    'SET_PASSWORD_RETYPE': True,
+    'PASSWORD_RESET_CONFIRM_RETYPE': True,
+    'PASSWORD_CHANGED_EMAIL_CONFIRMATION': True,
+    'USERNAME_CHANGED_EMAIL_CONFIRMATION': True,
     # 'PASSWORD_RESET_CONFIRM_URL' : 'password-reset/confirm/{uid}/{token}',
-    # 'ACTIVATION_URL': '',
+    'ACTIVATION_URL': 'activate/{uid}/{token}',
+    'PASSWORD_RESET_CONFIRM_URL' : 'reset_password/{uid}/{token}'
     # 'USER_CREATE_USERNAME_RETYPE' : True,  
 
 }
