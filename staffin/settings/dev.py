@@ -25,7 +25,7 @@ INSTALLED_APPS += ['debug_toolbar', 'django_extensions']
 MIDDLEWARE += ['debug_toolbar.middleware.DebugToolbarMiddleware', ]
 INTERNAL_IPS = ["127.0.0.1", ]
 
-MEDIA_ROOT = os.path.join(BASE_DIR, '..', '..', 'media')
+MEDIA_ROOT = 'media'
 MEDIA_URL = '/media/'
 
 

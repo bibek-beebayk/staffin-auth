@@ -59,7 +59,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'staffin.wsgi.application'
 
 
-
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 
@@ -137,17 +136,47 @@ AUTH_USER_MODEL = 'user.User'
 
 
 DJOSER = {
-    'USER_ID_FIELD' : 'id', 
-    'USER_CREATE_PASSWORD_RETYPE' : True,
-    'SEND_CONFIRMATION_EMAIL':  True,
-    'SEND_ACTIVATION_EMAIL': True,
+    'USER_ID_FIELD': 'id',
+    'USER_CREATE_PASSWORD_RETYPE': True,
+    # 'SEND_CONFIRMATION_EMAIL':  True,
+    # 'SEND_ACTIVATION_EMAIL': True,
     'SET_PASSWORD_RETYPE': True,
     'PASSWORD_RESET_CONFIRM_RETYPE': True,
-    'PASSWORD_CHANGED_EMAIL_CONFIRMATION': True,
-    'USERNAME_CHANGED_EMAIL_CONFIRMATION': True,
+    # 'PASSWORD_CHANGED_EMAIL_CONFIRMATION': True,
+    # 'USERNAME_CHANGED_EMAIL_CONFIRMATION': True,
     # 'PASSWORD_RESET_CONFIRM_URL' : 'password-reset/confirm/{uid}/{token}',
     'ACTIVATION_URL': 'activate/{uid}/{token}',
-    'PASSWORD_RESET_CONFIRM_URL' : 'reset_password/{uid}/{token}'
-    # 'USER_CREATE_USERNAME_RETYPE' : True,  
+    'PASSWORD_RESET_CONFIRM_URL': 'reset_password/{uid}/{token}',
+    # 'USER_CREATE_USERNAME_RETYPE' : True,
 
+    'SERIALIZERS': {
+        'user': 'apps.user.serializers.UserListSerializer',
+        'current_user': 'apps.user.serializers.UserDetailsSerializer',
+        'token': 'apps.user.serializers.TokenSerializer',
+        # 'activation': 'djoser.serializers.ActivationSerializer',
+        # 'password_reset': 'djoser.serializers.SendEmailResetSerializer',
+        # 'password_reset_confirm': 'djoser.serializers.PasswordResetConfirmSerializer',
+        # 'password_reset_confirm_retype': 'djoser.serializers.PasswordResetConfirmRetypeSerializer',
+        # 'set_password': 'djoser.serializers.SetPasswordSerializer',
+        # 'set_password_retype': 'djoser.serializers.SetPasswordRetypeSerializer',
+        # 'set_username': 'djoser.serializers.SetUsernameSerializer',
+        # 'set_username_retype': 'djoser.serializers.SetUsernameRetypeSerializer',
+        # 'username_reset': 'djoser.serializers.SendEmailResetSerializer',
+        # 'username_reset_confirm': 'djoser.serializers.UsernameResetConfirmSerializer',
+        # 'username_reset_confirm_retype': 'djoser.serializers.UsernameResetConfirmRetypeSerializer',
+        # 'user_create': 'djoser.serializers.UserCreateSerializer',
+        # 'user_create_password_retype': 'djoser.serializers.UserCreatePasswordRetypeSerializer',
+        # 'user_delete': 'djoser.serializers.UserDeleteSerializer',
+        # 'token_create': 'djoser.serializers.TokenCreateSerializer',
+
+    }
+
+}
+
+VERSATILEIMAGEFIELD_RENDITION_KEY_SETS = {
+    'profile_picture': {
+        ('listing', 'thumbnail__200x200'),
+        ('details', 'crop__500x500'),
+        ('full', 'url')
+    }
 }
